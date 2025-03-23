@@ -1,0 +1,17 @@
+{
+  "name": "owasp-top-10-api-security",
+  "version": "1.0.0",
+  "description": "Hands-on tutorial for OWASP Top 10 API Security with Node.js - Part 2",
+  "main": "index.js",
+  "scripts": {
+    "start:risk6": "node Risk-6-UASBF/problem.js",
+    "start:risk6-solution": "node Risk-6-UASBF/solution.js"
+  },
+  "keywords": [],
+  "author": "tegar-wahyu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0"
+  }
+}
