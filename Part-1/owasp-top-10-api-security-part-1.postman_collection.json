@@ -452,6 +452,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{INSERT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -632,7 +642,19 @@
 					"name": "Get Profile",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/profile/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profile",
+								"2"
+							]
+						}
 					},
 					"response": [
 						{
@@ -746,7 +768,7 @@
 					]
 				}
 			],
-			"description": "This folder demonstrates **Broken Object Property Level Authorization (BOPLA)**, where users can modify or access object properties they shouldn’t. `Update Profile` tests property updates, and `Get Profile` retrieves data."
+			"description": "This folder demonstrates **Broken Object Property Level Authorization (BOPLA)**, where users can modify or access object properties they shouldn't. `Update Profile` tests property updates, and `Get Profile` retrieves data."
 		},
 		{
 			"name": "Risk-4-URC",
@@ -950,7 +972,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"50\"\r\n}",
+							"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"20\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1125,7 +1147,20 @@
 					"name": "Logged in User",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"profile"
+							]
+						}
 					},
 					"response": [
 						{
