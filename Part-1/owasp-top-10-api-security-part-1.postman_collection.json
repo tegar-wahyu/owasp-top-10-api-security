@@ -1,0 +1,1344 @@
+{
+	"info": {
+		"_postman_id": "d0a52309-7070-4349-a5bd-049d66a31e30",
+		"name": "owasp-top-10-api-security-part-1",
+		"description": "# 📄 OWASP Top 10 API Security - Part 1\n\nThis Postman collection is designed to accompany the [OWASP Top 10 API Security Hands-On Tutorial GitHub repository](https://github.com/tegar-wahyu/owasp-top-10-api-security). It provides a practical way to test and explore the first five OWASP Top 10 API Security risks using Node.js-based examples. Each risk includes API endpoints with \"Vulnerable\" and \"Safe\" responses, allowing you to observe security flaws, attempt your own fixes, and verify against secure implementations.\n\n## 🔖 How to Use This Collection\n\n- Pair this collection with the GitHub repository to test vulnerable and secure API endpoints.\n    \n- Use the provided requests to explore each risk, then attempt to mitigate vulnerabilities yourself before checking the secure responses.\n    \n\n---\n\nThe OWASP Top 10 API Security - Part 1 collection enables you to test and learn about critical API vulnerabilities through real-world examples. It covers:\n\n- **Risk-1-BOLA**: Broken Object Level Authorization\n    \n- **Risk-2-BUA**: Broken User Authentication\n    \n- **Risk-3-BOPLA**: Broken Object Property Level Authorization\n    \n- **Risk-4-URC**: Unrestricted Resource Consumption\n    \n- **Risk-5-BFLA**: Broken Function Level Authorization\n    \n\nEach risk folder contains requests that demonstrate both vulnerable and secure behaviors, linked to the Node.js code in the repository.\n\n---\n\n## **Getting Started Guide**\n\nTo use this collection with the GitHub repository:\n\n- Clone the repository: `git clone https://github.com/tegar-wahyu/owasp-top-10-api-security.git`\n    \n- Install dependencies: `cd owasp-top-10-api-security && npm install`\n    \n- Run the Node.js server on `http://localhost:3000` using the repository’s npm scripts (e.g., `npm run start:risk1`).\n    \n- Responses are returned in JSON format, with errors included as an `error` key.\n    \n\n---\n\n## **Testing Workflow**\n\nFor each risk:\n\n1. **Explore the Vulnerability**:\n    \n    - Start the vulnerable server (e.g., `npm run start:risk1`).\n        \n    - Send the request from the corresponding risk folder (e.g., `Risk-1-BOLA > Get User Data`).\n        \n    - Check the \"Vulnerable\" response (e.g., HTTP 200 with unauthorized data) to see the security issue.\n        \n2. **Attempt Your Fix**:\n    \n    - Modify the `problem.js` file in the repository to secure the endpoint.\n        \n    - Restart the server and re-run the Postman request.\n        \n    - Aim for a secure response (e.g., HTTP 403 Forbidden).\n        \n3. **Verify with the Solution**:\n    \n    - Run the secure server (e.g., `npm run start:risk1-solution`).\n        \n    - Send the same request and compare the \"Safe\" response to your attempt.\n        \n    - Review the `solution.js` file to understand the proper fix.\n        \n\n---\n\n## **Need Some Help?**\n\n- Refer to the GitHub repository’s README for setup and usage details.\n    \n- Check the \"Vulnerable\" and \"Safe\" responses in each request to understand the differences.\n    \n- Explore the `problem.js` and `solution.js` files in the repository for code-level insights.\n    \n\nThis collection is a hands-on tool to master API security—test, fix, and verify your skills!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29703395",
+		"_collection_link": "https://fineksi-6.postman.co/workspace/28590573-857b-4507-94a4-b601aa70d10e/collection/29703395-d0a52309-7070-4349-a5bd-049d66a31e30?action=share&source=collection_link&creator=29703395"
+	},
+	"item": [
+		{
+			"name": "Risk-1-BOLA",
+			"item": [
+				{
+					"name": "Get User Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/records/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"records",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vulnerable",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/records/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"records",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-KBoXX6RYTPkKAyLgIEMEFdSqPmg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 10:07:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"loggedInUser\": \"Alice\",\n    \"record\": {\n        \"id\": 2,\n        \"ownerId\": 2,\n        \"data\": \"Bob's private data\"\n    }\n}"
+						},
+						{
+							"name": "Safe",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/records/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"records",
+										"2"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-gcuBn8NWIWhAzsc2InST6F9nuHI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 10:07:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Forbidden: You do not have permission to access this record\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder explores **Broken Object Level Authorization (BOLA)**, where an API fails to verify if a user has permission to access a specific resource. The `Get User Data` request demonstrates accessing a record by ID without proper authorization checks."
+		},
+		{
+			"name": "Risk-2-BUA",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"alice\",\r\n  \"password\": \"anything\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Safe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"alice\",\r\n  \"password\": \"anything\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 11:46:26 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1742731287"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-mRYQ6Yx/raK/ssDeWseqQCiH0yM\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Invalid credentials\"\n}"
+						},
+						{
+							"name": "Rate Limit (5/15Minute)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"alice\",\r\n  \"password\": \"anything\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 11:50:42 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1742731461"
+								},
+								{
+									"key": "Retry-After",
+									"value": "819"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-eohXzGXEh94YvcBOUFyzkgpM9rE\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Too many login attempts, please try again later\"\n}"
+						},
+						{
+							"name": "Vulnerable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"alice\",\r\n  \"password\": \"anything\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-9C635rArKx2tozvdJ8JLx1S/vfk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 12:46:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successful\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQyNzMzOTY3fQ._sQhLdYHnVxa-7Xv_14TJlAHrpIlFXiBW7I1-XYMsLg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profile"
+							]
+						},
+						"description": "Gets information about the authenticated user."
+					},
+					"response": []
+				}
+			],
+			"description": "This folder covers **Broken User Authentication (BUA)**, where weak authentication allows unauthorized access. The `Login` request tests credential validation, and `Profile` retrieves user data."
+		},
+		{
+			"name": "Risk-3-BOPLA",
+			"item": [
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"isAdmin\": true,\r\n    \"ssn\": \"999-99-9999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/update-profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"update-profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vulnerable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"isAdmin\": true,\r\n    \"ssn\": \"999-99-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/update-profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"update-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7f-AiIS7iTZfc943ybby/pTiW2WXlk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 13:56:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Profile updated\",\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"alice\",\n        \"isAdmin\": true,\n        \"email\": \"alice@example.com\",\n        \"ssn\": \"999-99-9999\"\n    }\n}"
+						},
+						{
+							"name": "Safe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"isAdmin\": true,\r\n    \"ssn\": \"999-99-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/update-profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"update-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5c-H+ZNqcZ+wVFwyyOs1RDspJYcPUE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 13:58:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Profile updated\",\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"alice\",\n        \"email\": \"alice@example.com\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Vulnerable",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/profile/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"profile",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-U51AFBEraf8dwcV6sPEyK7ZQ4pc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 13:56:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"username\": \"bob\",\n    \"isAdmin\": false,\n    \"email\": \"bob@example.com\",\n    \"ssn\": \"987-65-4321\"\n}"
+						},
+						{
+							"name": "Safe",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/profile/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"profile",
+										"2"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-tEmkMX1+oowHSAHhiOmQtXWCk/c\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 13:58:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthorized access to this profile\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder demonstrates **Broken Object Property Level Authorization (BOPLA)**, where users can modify or access object properties they shouldn’t. `Update Profile` tests property updates, and `Get Profile` retrieves data."
+		},
+		{
+			"name": "Risk-4-URC",
+			"item": [
+				{
+					"name": "Send Data 50MB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"50\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Safe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"50\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/data",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"data"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "4"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 14:37:35 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1742744256"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-dVNkWenykJY163dsnTHv011m5ko\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"fileSize cannot exceed 20 MB\"\n}"
+						},
+						{
+							"name": "Vulnerable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"50\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/data",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"data"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-PO3PFlc4I/lBcciWhK5k5srgoMc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 14:37:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Simulated data received!\",\n    \"fileName\": \"invoice.pdf\",\n    \"fileSize\": \"50\",\n    \"totalStorageUsageMB\": \"50.00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Rate Limit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"50\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vulnerable (10x Request)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"20\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/data",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"data"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e-o+6lQn9nOnNiH8uofT7o9mkce+k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 14:39:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Simulated data received!\",\n    \"fileName\": \"invoice.pdf\",\n    \"fileSize\": \"20\",\n    \"totalStorageUsageMB\": \"200.00\"\n}"
+						},
+						{
+							"name": "Safe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fileName\": \"invoice.pdf\",\r\n    \"fileSize\": \"20\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/data",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"data"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "5"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 14:39:55 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1742744392"
+								},
+								{
+									"key": "Retry-After",
+									"value": "3596"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-e69vQ30o1HxEsVd6wjWGsBKs6ts\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Too many requests, limit is 5 per hour\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder addresses **Unrestricted Resource Consumption (URC)**, where lack of limits allows resource abuse. `Send Data 50MB` tests file size limits, and `Rate Limit` checks request frequency."
+		},
+		{
+			"name": "Risk-5-BFLA",
+			"item": [
+				{
+					"name": "Logged in User",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Alice is Regular User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-bjGvSTkkSCzPqiaxNrAtiMKHPLc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 14:49:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Your profile\",\n    \"user\": {\n        \"id\": 1,\n        \"name\": \"Alice\",\n        \"role\": \"user\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Admin Endpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vulnerable",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "244"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f4-rLyMS8c5TH4+y4o+HQD2ouptVho\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 14:50:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Admin view: All users\",\n    \"users\": [\n        {\n            \"id\": 1,\n            \"name\": \"Alice\",\n            \"email\": \"alice@example.com\",\n            \"role\": \"user\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Bob\",\n            \"email\": \"bob@example.com\",\n            \"role\": \"admin\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Charlie\",\n            \"email\": \"charlie@example.com\",\n            \"role\": \"user\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Safe",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/admin/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"admin",
+										"users"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-/Fw+E1wHHG+ZSIg4CwwRMk8qA0k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Mar 2025 14:53:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Forbidden: Admin access required\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder illustrates **Broken Function Level Authorization (BFLA)**, where users access restricted functions (e.g., admin endpoints). `Logged in User` shows the current user, and `Admin Endpoint` tests admin access."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
