@@ -1,0 +1,16 @@
+{
+  "name": "owasp-top-10-api-security",
+  "version": "1.0.0",
+  "description": "Hands-on tutorial for OWASP Top 10 API Security with Node.js - Part 1",
+  "main": "index.js",
+  "scripts": {
+    "start:risk1": "node Risk-1-BOLA/problem.js",
+    "start:risk1-solution": "node Risk-1-BOLA/solution.js"
+  },
+  "keywords": [],
+  "author": "tegar-wahyu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
