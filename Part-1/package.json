@@ -5,12 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start:risk1": "node Risk-1-BOLA/problem.js",
-    "start:risk1-solution": "node Risk-1-BOLA/solution.js"
+    "start:risk1-solution": "node Risk-1-BOLA/solution.js",
+    "start:risk2": "node Risk-2-BUA/problem.js",
+    "start:risk2-solution": "node Risk-2-BUA/solution.js"
   },
   "keywords": [],
   "author": "tegar-wahyu",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2"
   }
 }
