@@ -32,9 +32,9 @@ app.get("/records/:id", (req, res) => {
     return res.status(404).json({ error: "Record not found" });
   }
 
-  // Only the owner reaches this point
+  // 🚨 Only the owner reaches this point
   res.json({
-    loggedInUser: req.user.name, // Show who’s logged in
+    loggedInUser: req.user.name, // Show who's logged in
     record: record
   });
 });
@@ -49,7 +49,4 @@ app.listen(port, () => {
  - Alice is logged in (ID 1), but she can access Bob's record (ID 2) by changing the URL
  - No check ensures the logged-in user owns the requested record
  - Unauthorized access to sensitive data is possible
-
- SOLUTION: Implement ownership check (e.g., req.user.id === record.ownerId)
- See solution in solution-index.js
 */
