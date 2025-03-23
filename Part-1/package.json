@@ -9,7 +9,9 @@
     "start:risk2": "node Risk-2-BUA/problem.js",
     "start:risk2-solution": "node Risk-2-BUA/solution.js",
     "start:risk3": "node Risk-3-BOPLA/problem.js",
-    "start:risk3-solution": "node Risk-3-BOPLA/solution.js"
+    "start:risk3-solution": "node Risk-3-BOPLA/solution.js",
+    "start:risk4": "node Risk-4-URC/problem.js",
+    "start:risk4-solution": "node Risk-4-URC/solution.js"
   },
   "keywords": [],
   "author": "tegar-wahyu",
