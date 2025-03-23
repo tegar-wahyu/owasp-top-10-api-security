@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start:risk6": "node Risk-6-UASBF/problem.js",
-    "start:risk6-solution": "node Risk-6-UASBF/solution.js"
+    "start:risk6-solution": "node Risk-6-UASBF/solution.js",
+    "start:risk7": "node Risk-7-SSRF/problem.js",
+    "start:risk7-solution": "node Risk-7-SSRF/solution.js"
   },
   "keywords": [],
   "author": "tegar-wahyu",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",
-    "express-rate-limit": "^7.5.0"
+    "express-rate-limit": "^7.5.0",
+    "node-fetch": "^2.7.0"
   }
 }
