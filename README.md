@@ -32,7 +32,7 @@ The repository is organized into two main parts:
 │   ├── owasp-top-10-api-security-part-1.postman_collection.json
 │   ├── package.json
 │   └── package-lock.json
-└── Part-2/               # Coming soon with more vulnerabilities
+└── Part-2/
 ```
 
 Each risk folder contains:
@@ -55,6 +55,21 @@ Each risk folder contains:
 
 ### 5. Broken Function Level Authorization (BFLA)
 **Risk-5-BFLA**: Occurs when an API fails to restrict access to certain functionality that a user shouldn't have permission to use, typically related to administrative functions.
+
+### 6. Unrestricted Access to Sensitive Business Flows
+**API6:2023**: Occurs when APIs expose sensitive business processes without proper access controls, allowing attackers to manipulate or misuse critical workflows.
+
+### 7. Server-Side Request Forgery (SSRF)
+**API7:2023**: Happens when an API allows attackers to make unauthorized requests to internal or external systems by exploiting server-side request handling.
+
+### 8. Security Misconfiguration
+**API8:2023**: Involves improper configuration of API components, such as unnecessary HTTP methods, overly permissive CORS policies, or default credentials, leading to security vulnerabilities.
+
+### 9. Improper Inventory Management
+**API9:2023**: Occurs when APIs lack proper documentation or versioning, making it difficult to track and secure all endpoints, leading to exposure of deprecated or unprotected APIs.
+
+### 10. Unsafe API Consumptions
+**API10:2023**: Happens when APIs consume data from untrusted sources without proper validation or sanitization, leading to injection attacks or data leakage.
 
 ## Getting Started
 
