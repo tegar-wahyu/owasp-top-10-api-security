@@ -9,7 +9,9 @@
     "start:risk7": "node Risk-7-SSRF/problem.js",
     "start:risk7-solution": "node Risk-7-SSRF/solution.js",
     "start:risk8": "node Risk-8-SM/problem.js",
-    "start:risk8-solution": "node Risk-8-SM/solution.js"
+    "start:risk8-solution": "node Risk-8-SM/solution.js",
+    "start:risk9": "node Risk-9-IIM/problem.js",
+    "start:risk9-solution": "node Risk-9-IIM/solution.js"
   },
   "keywords": [],
   "author": "tegar-wahyu",
