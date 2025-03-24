@@ -7,12 +7,15 @@
     "start:risk6": "node Risk-6-UASBF/problem.js",
     "start:risk6-solution": "node Risk-6-UASBF/solution.js",
     "start:risk7": "node Risk-7-SSRF/problem.js",
-    "start:risk7-solution": "node Risk-7-SSRF/solution.js"
+    "start:risk7-solution": "node Risk-7-SSRF/solution.js",
+    "start:risk8": "node Risk-8-SM/problem.js",
+    "start:risk8-solution": "node Risk-8-SM/solution.js"
   },
   "keywords": [],
   "author": "tegar-wahyu",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
     "node-fetch": "^2.7.0"
